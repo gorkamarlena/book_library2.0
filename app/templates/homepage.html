@@ -1,0 +1,26 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Welcome in my book library!</h1>
+    </div>
+</div>
+{% for book in all_books %}
+<div class="col-lg-12 mt-5">
+    <table class="col-lg-12 mt-2" style="width:50%">
+        <tr>
+          <th style="width:10%">ID</th>
+          <th style="width:40%">Book title</th>
+          <th style="width:30%">Author</th>
+          <th style="width:10%">Availability</th>
+        </tr>
+        <tr>
+          <td>{{book.id}}</td>
+          <td>{{book.title}}</td>
+          <td>{% for author in book.authors.all() %} {{author}} {% endfor %}</td>
+          <td>{% if book.is_available %} Available {% else %} Unavailable {% endif %}</td>
+        </tr>
+      </table>
+</div>
+{% endfor %}
+{% endblock %}

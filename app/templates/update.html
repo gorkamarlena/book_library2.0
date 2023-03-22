@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="row">
+    <div class="col-lg-12 text-center">
+        <h1 class="mt-5">Welcome in my book library!</h1>
+    </div>
+</div>
+<div class="col-lg-12 mt-5 text-center">
+    <form action = "/find_book" method = "POST">
+         Find book by ID: <input type = "text" id = "id" name = "id"><br>
+         <div class="mt-2">
+            <input type = "submit" value = "find" class="btn btn-outline-info">
+         </div>
+    </form>
+</div>
+{% if authorName %}
+<div class="col-lg-12 mt-5 p-3 mb-2 bg-light text-dark">
+    <form action = "/update" method = "POST">
+        <div class="mt-2">ID: <input type = "text" id = "id" name = "id" value = {{id}}></div>
+        <div class="mt-2">Title: <input type = "text" id = "title" name = "title" value = {{title}}></div>
+        <div class="mt-2">Author name: <input type = "text" id = "authorName" name = "authorName" value = {{authorName}}></div>
+        <div class="mt-2">Author last name: <input type = "text" id = "authorLastName" name = "authorLastName" value = {{authorLastName}}></div>
+        <div class="mt-2">Second author name: <input type = "text" id = "authorName2" name = "authorName2" value = {{authorName2}}></div>
+        <div class="mt-2">Second author last name: <input type = "text" id = "authorLastName2" name = "authorLastName2" value = {{authorLastName2}}></div>
+        <div class="mt-2">Availability: <input type = "checkbox" id = "available" name = "available" {% if available %} checked {% endif %}></div>
+        <div class="col-lg-12 text-center">
+            <input type = "submit" value = "update" class="btn btn-danger">
+        </div>
+    </form>
+</div>
+{% endif %}
+{% endblock %}
